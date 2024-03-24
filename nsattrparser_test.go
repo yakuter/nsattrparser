@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"testing"
 
-	"yakuter.com/nsattrparser"
+	"github.com/yakuter/nsattrparser"
 )
 
 func TestParse(t *testing.T) {
