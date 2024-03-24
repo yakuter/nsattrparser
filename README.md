@@ -1,15 +1,15 @@
 # nsattrparser: A Go Package for Parsing NSAttributedString Binary Data
-The attrparser package provides a straightforward and efficient solution for extracting text from binary-encoded NSAttributedString data. Designed for Go developers, it simplifies the process of parsing complex binary formats that originate from Apple's Foundation framework, specifically those used in text styling and formatting within iOS and macOS applications.
+The nsattrparser package provides a straightforward and efficient solution for extracting text from binary-encoded **NSAttributedString** data. Designed for Go developers, it simplifies the process of parsing complex binary formats that originate from **Apple's Foundation framework**, specifically those used in text styling and formatting within iOS and macOS applications.
 
 ## Key Features
-Binary Pattern Recognition: Utilizes predefined start and end binary patterns to identify the relevant sections of data for extraction, making it highly effective at parsing structured binary text data.
-UTF-8 Validation and Correction: Employs UTF-8 validation to ensure the extracted text adheres to UTF-8 standards, with built-in mechanisms for handling and correcting non-UTF-8 compliant data.
-Simplicity and Efficiency: Designed with simplicity in mind, attrparser allows for easy integration into projects, providing a high-performance parsing solution without the overhead of external dependencies or complex configurations.
+**Binary Pattern Recognition:** Utilizes predefined start and end binary patterns to identify the relevant sections of data for extraction, making it highly effective at parsing structured binary text data.  
+**UTF-8 Validation and Correction:** Employs UTF-8 validation to ensure the extracted text adheres to UTF-8 standards, with built-in mechanisms for handling and correcting non-UTF-8 compliant data.  
+**Simplicity and Efficiency:** Designed with simplicity in mind, attrparser allows for easy integration into projects, providing a high-performance parsing solution without the overhead of external dependencies or complex configurations.  
 
 ## Use Cases
-**Data Extraction:** Ideal for developers needing to extract and manipulate text from binary-encoded NSAttributedString objects, especially when dealing with cross-platform data interchange between iOS/macOS applications and Go-based systems.
-**Content Migration:** Facilitates the migration of rich text content from Apple ecosystem applications into other platforms or formats, preserving text content while omitting proprietary styling information.
-**Debugging and Analysis:** Useful in debugging scenarios where binary NSAttributedString data needs to be inspected or analyzed, providing clear and immediate access to the encapsulated text.
+**Data Extraction:** Ideal for developers needing to extract and manipulate text from binary-encoded NSAttributedString objects, especially when dealing with cross-platform data interchange between iOS/macOS applications and Go-based systems.  
+**Content Migration:** Facilitates the migration of rich text content from Apple ecosystem applications into other platforms or formats, preserving text content while omitting proprietary styling information.  
+**Debugging and Analysis:** Useful in debugging scenarios where binary NSAttributedString data needs to be inspected or analyzed, providing clear and immediate access to the encapsulated text.  
 
 ## Getting Started
 To use the attrparser package in your Go project, simply install and use it as follows:
