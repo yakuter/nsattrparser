@@ -1,0 +1,28 @@
+package nsattrparser_test
+
+import (
+	"encoding/hex"
+	"fmt"
+	"testing"
+
+	"yakuter.com/nsattrparser"
+)
+
+func TestParse(t *testing.T) {
+	hexData := "040b73747265616d747970656481e803840140848484194e534d757461626c6541747472696275746564537472696e67008484124e5341747472696275746564537472696e67008484084e534f626a6563740085928484840f4e534d757461626c65537472696e67018484084e53537472696e67019584012b29576861742061626f757420746865206c617374207461736b2077652074616c6b65642061626f75743f86840269490129928484840c4e5344696374696f6e617279009584016901928498981d5f5f6b494d4d657373616765506172744174747269627574654e616d658692848484084e534e756d626572008484074e5356616c7565009584012a849b9b00868686"
+
+	binaryData, err := hex.DecodeString(hexData)
+	if err != nil {
+		fmt.Printf("Error decoding hex string: %v\n", err)
+		return
+	}
+
+	expected := "What about the last task we talked about?"
+	actual, err := nsattrparser.Parse(binaryData)
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+	if actual != expected {
+		t.Fatalf("expected: %q, got: %q", expected, actual)
+	}
+}
