@@ -2,6 +2,7 @@
 package nsattrparser
 
 import (
+	"bytes"
 	"errors"
 	"unicode/utf8"
 )
@@ -14,30 +15,20 @@ var (
 // Parse attempts to extract and return the text contained within the binary data,
 // delimited by specified start and end patterns.
 func Parse(stream []byte) (string, error) {
-	startIdx := findPatternIndex(stream, startPattern)
-	if startIdx == -1 {
-		return "", errors.New("start pattern not found")
-	}
-	stream = stream[startIdx+len(startPattern):]
-
-	endIdx := findPatternIndex(stream, endPattern)
-	if endIdx == -1 {
-		return "", errors.New("end pattern not found")
-	}
-	stream = stream[:endIdx]
-
-	if utf8.Valid(stream) {
-		return string(stream[1:]), nil
-	} else {
-		return string(stream[3:]), nil
-	}
-}
-
-func findPatternIndex(stream []byte, pattern []byte) int {
-	for i := 0; i <= len(stream)-len(pattern); i++ {
-		if match := stream[i : i+len(pattern)]; string(match) == string(pattern) {
-			return i
+	left, right := 0, len(stream)-1
+	for left < right {
+		if !bytes.Equal(stream[left:left+2], startPattern) {
+			left++
+		} else if !bytes.Equal(stream[right-1:right+1], endPattern) {
+			right--
+		} else {
+			stream = stream[left+2 : right-1] // exclude patterns
+			if utf8.Valid(stream) {
+				return string(stream[1:]), nil
+			} else {
+				return string(stream[3:]), nil
+			}
 		}
 	}
-	return -1
+	return "", errors.New("start or end pattern not found")
 }
