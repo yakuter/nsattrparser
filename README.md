@@ -15,16 +15,21 @@ Simplicity and Efficiency: Designed with simplicity in mind, attrparser allows f
 To use the attrparser package in your Go project, simply install and use it as follows:
 
 
+### Install
 ``` go
 go get github.com/yakuter/nsattrparser
 ```
 
+### Usage
 ```go
-...
+package main
 
-import "github.com/yakuter/nsattrparser"
+import (
+	"encoding/hex"
+	"fmt"
 
-...
+	"github.com/yakuter/nsattrparser"
+)
 
 func main() {
 	hexData := "040b73747265616d747970656481e803840140848484194e534d757461626c6541747472696275746564537472696e67008484124e5341747472696275746564537472696e67008484084e534f626a6563740085928484840f4e534d757461626c65537472696e67018484084e53537472696e67019584012b29576861742061626f757420746865206c617374207461736b2077652074616c6b65642061626f75743f86840269490129928484840c4e5344696374696f6e617279009584016901928498981d5f5f6b494d4d657373616765506172744174747269627574654e616d658692848484084e534e756d626572008484074e5356616c7565009584012a849b9b00868686"
@@ -37,16 +42,15 @@ func main() {
 	}
 
 	// Parse the binary data
-	parsedText, parseErr := parse(binaryData)
+	parsedText, parseErr := nsattrparser.Parse(binaryData)
 	if parseErr != nil {
 		fmt.Printf("Error parsing binary data: %v\n", parseErr)
 		return
 	}
 
 	fmt.Printf("Parsed text: %s\n", parsedText)
-    // OUTPUT: Parsed text: What about the last task we talked about?
+	// OUTPUT: Parsed text: What about the last task we talked about?
 }
-
 ```
 
 
